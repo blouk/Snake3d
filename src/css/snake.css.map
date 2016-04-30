@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAEA,SAAS,CACL,MAAM,CAAE,CAAC,CACb,WAAW,CACP,QAAQ,CAAE,QAAQ,CAClB,KAAK,CAAE,IAAI,CACX,GAAG,CAAE,CAAC,CACN,KAAK,CAAE,CAAC,CACR,MAAM,CAAE,CAAC,CACT,MAAM,CAAE,SAAS,CACjB,UAAU,CAAE,eAAc",
+"sources": ["snake.sass"],
+"names": [],
+"file": "snake.css"
+}
