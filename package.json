@@ -3,9 +3,6 @@
     "version": "1.0.0",
     "description": "",
     "main": "app/Snake.js",
-    "scripts": {
-        "start": "live-server"
-    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/blouk/Snake3d.git"
@@ -17,12 +14,14 @@
     },
     "homepage": "https://github.com/blouk/Snake3d#readme",
     "dependencies": {
+        "es6-shim": "^0.35.0",
         "jquery": "^2.2.3",
         "live-server": "^1.0.0",
+        "requirejs": "^2.2.0",
+        "systemjs": "^0.19.27",
         "three": "^0.76.1"
     },
     "scripts": {
-        "start": "live-server --open=src/ --port=8000"
+        "start": "live-server --open=./ --port=8080"
     }
-
 }
