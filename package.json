@@ -1,23 +1,28 @@
 {
-  "name": "snake3d",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app/Snake.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/blouk/Snake3d.git"
-  },
-  "author": "blouk",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/blouk/Snake3d/issues"
-  },
-  "homepage": "https://github.com/blouk/Snake3d#readme",
-  "dependencies": {
-    "jquery": "^2.2.3",
-    "three": "^0.76.1"
-  }
+    "name": "snake3d",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app/Snake.js",
+    "scripts": {
+        "start": "live-server"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/blouk/Snake3d.git"
+    },
+    "author": "blouk",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/blouk/Snake3d/issues"
+    },
+    "homepage": "https://github.com/blouk/Snake3d#readme",
+    "dependencies": {
+        "jquery": "^2.2.3",
+        "live-server": "^1.0.0",
+        "three": "^0.76.1"
+    },
+    "scripts": {
+        "start": "live-server --open=./ --port=8000"
+    }
+
 }
