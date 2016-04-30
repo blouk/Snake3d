@@ -22,7 +22,7 @@
         "three": "^0.76.1"
     },
     "scripts": {
-        "start": "live-server --open=./ --port=8000"
+        "start": "live-server --open=src/ --port=8000"
     }
 
 }
