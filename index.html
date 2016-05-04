@@ -10,16 +10,20 @@
     <script src="node_modules/systemjs/dist/system.src.js"></script>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/three/three.min.js"></script>
-    <script>
-    System.config({
-           packages: {'app': {defaultExtension: 'js'}}
-       });
-       System.import('app/Snake');
-    </script>
+
 </head>
 
 <body>
-    <div id="snake_area"></div>
+    <script>
+        System.config({
+            packages: {
+                'app': {
+                    defaultExtension: 'js'
+                }
+            }
+        });
+        System.import('app/Snake');
+    </script>
 </body>
 
 </html>
