@@ -7,17 +7,11 @@ System.register([], function(exports_1, context_1) {
         execute: function() {
             Debug = (function () {
                 function Debug() {
+                    $('body').append('<div id="debug"></div>');
+                    this.debugg = $('#debug');
                 }
-                Debug.prototype.constuctor = function () {
-                    var _this = this;
-                    $(document).ready(function () {
-                        _this.canvas = $('canvas')[0];
-                        _this.context = _this.canvas.getContext('2d');
-                        console.log(_this.context);
-                    });
-                };
-                Debug.prototype.log = function () {
-                    //this.ctx.fillText(this.snake_array[0].position, 5, window.innerHeight - 5);
+                Debug.prototype.log = function (message) {
+                    this.debugg.html(message);
                 };
                 return Debug;
             }());
