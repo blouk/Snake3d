@@ -3,10 +3,10 @@
 
 ##Get the code
 
-''''bash
+````bash
 git clone https://github.com/blouk/Snake3d.git
 cd Snake3d
-''''
+````
 
 ##Install dependencies:
 
