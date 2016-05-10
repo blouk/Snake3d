@@ -218,10 +218,9 @@ class Snake {
 
 
 
-class StartGame {
+class Boot {
 
     constructor() {
-        const speed: number = .01;
         $(window).ready(() => this.init());
     }
 
@@ -238,4 +237,4 @@ class StartGame {
 }
 
 
-new StartGame();
+new Boot();

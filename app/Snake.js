@@ -2,7 +2,7 @@ System.register(['./modules/KeyEvent', './modules/Debug'], function(exports_1, c
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var KeyEvent_1, KeyEvent_2, Debug_1;
-    var Snake, StartGame;
+    var Snake, Boot;
     return {
         setters:[
             function (KeyEvent_1_1) {
@@ -178,13 +178,12 @@ System.register(['./modules/KeyEvent', './modules/Debug'], function(exports_1, c
                 return Snake;
             }());
             ;
-            StartGame = (function () {
-                function StartGame() {
+            Boot = (function () {
+                function Boot() {
                     var _this = this;
-                    var speed = .01;
                     $(window).ready(function () { return _this.init(); });
                 }
-                StartGame.prototype.init = function () {
+                Boot.prototype.init = function () {
                     var snake_game = new Snake();
                     snake_game.create_sound();
                     snake_game.build_playground();
@@ -194,9 +193,9 @@ System.register(['./modules/KeyEvent', './modules/Debug'], function(exports_1, c
                     snake_game.loop();
                     snake_game.keys();
                 };
-                return StartGame;
+                return Boot;
             }());
-            new StartGame();
+            new Boot();
         }
     }
 });
