@@ -62,6 +62,20 @@ System.register(['./modules/KeyEvent', './modules/Debug'], function(exports_1, c
                         this.scene.add(cube);
                     }
                 };
+                Snake.prototype.create_sound = function () {
+                    this.sound = new Howl({
+                        urls: ['/sounds/snake3d.ogg', '/sounds/snake3d.mp3'],
+                        sprite: {
+                            'theme': [0, 69851],
+                            'over': [70574, 6564],
+                            'food': [77926, 2191],
+                            'left': [80707, 1231],
+                            'right': [82568, 1231],
+                            'up': [84512, 1231],
+                            'down': [86323, 1231]
+                        }
+                    });
+                };
                 Snake.prototype.create_food = function () {
                     this.scene.remove(this.food);
                     var geometry = new THREE.BoxGeometry(this.size, this.size, this.size);
@@ -110,6 +124,7 @@ System.register(['./modules/KeyEvent', './modules/Debug'], function(exports_1, c
                     if (this.nx == -1 || this.nx == Math.round(this.size_playground / this.size) || this.ny == -1 || this.ny == Math.round(this.size_playground / this.size) || this.check_collision()) {
                     }
                     if (this.nx == this.food.position.x && this.ny == this.food.position.y) {
+                        this.sound.play('food');
                         var cube = this.snake_cube();
                         this.snake_array.push(cube);
                         this.scene.add(cube);
@@ -136,6 +151,30 @@ System.register(['./modules/KeyEvent', './modules/Debug'], function(exports_1, c
                     var cube = new THREE.Mesh(geometry, material);
                     return cube;
                 };
+                Snake.prototype.keys = function () {
+                    var _this = this;
+                    var keyevent = new KeyEvent_1.KeyEvent();
+                    keyevent.KeyPress.on(function (e) {
+                        if (e == KeyEvent_2.Key.left && _this.direction != KeyEvent_2.Key.right) {
+                            _this.direction = KeyEvent_2.Key.left;
+                            _this.sound.play('left').loop(false);
+                        }
+                        if (e == KeyEvent_2.Key.right && _this.direction != KeyEvent_2.Key.left) {
+                            _this.direction = KeyEvent_2.Key.right;
+                            _this.sound.play('right').loop(false);
+                        }
+                        if (e == KeyEvent_2.Key.down && _this.direction != KeyEvent_2.Key.up) {
+                            _this.direction = KeyEvent_2.Key.down;
+                            _this.sound.play('down').loop(false);
+                        }
+                        if (e == KeyEvent_2.Key.up && _this.direction != KeyEvent_2.Key.down) {
+                            _this.direction = KeyEvent_2.Key.up;
+                            _this.sound.play('up').loop(false);
+                        }
+                    });
+                    var theme = this.sound;
+                    //theme.play('theme').loop(true);
+                };
                 return Snake;
             }());
             ;
@@ -147,22 +186,13 @@ System.register(['./modules/KeyEvent', './modules/Debug'], function(exports_1, c
                 }
                 StartGame.prototype.init = function () {
                     var snake_game = new Snake();
+                    snake_game.create_sound();
                     snake_game.build_playground();
                     snake_game.create_snake();
                     snake_game.create_food();
                     snake_game.render();
                     snake_game.loop();
-                    var keyevent = new KeyEvent_1.KeyEvent();
-                    keyevent.KeyPress.on(function (e) {
-                        if (e == KeyEvent_2.Key.left && snake_game.direction != KeyEvent_2.Key.right)
-                            snake_game.direction = KeyEvent_2.Key.left;
-                        if (e == KeyEvent_2.Key.right && snake_game.direction != KeyEvent_2.Key.left)
-                            snake_game.direction = KeyEvent_2.Key.right;
-                        if (e == KeyEvent_2.Key.down && snake_game.direction != KeyEvent_2.Key.up)
-                            snake_game.direction = KeyEvent_2.Key.down;
-                        if (e == KeyEvent_2.Key.up && snake_game.direction != KeyEvent_2.Key.down)
-                            snake_game.direction = KeyEvent_2.Key.up;
-                    });
+                    snake_game.keys();
                 };
                 return StartGame;
             }());

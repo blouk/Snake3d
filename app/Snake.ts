@@ -1,8 +1,8 @@
-///<reference path='../typings/threejs/three.d.ts'/>
 import {KeyEvent} from './modules/KeyEvent';
 import {Key} from './modules/KeyEvent';
 import {IEventDispatcher} from './modules/EventDispatcher';
 import {Debug} from './modules/Debug';
+
 
 class Snake {
 
@@ -24,14 +24,12 @@ class Snake {
     fps: number = 20;
     loop_timer: number;
     size_playground = Math.round(40 * this.size);
-    debug: any;
+    debug: Debug;
+    sound: Howl;
     private timer;
 
 
     constructor() {
-
-
-
 
         this.scene = new THREE.Scene();
         this.camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -67,6 +65,7 @@ class Snake {
         document.body.appendChild(this.renderer.domElement);
 
         this.debug = new Debug();
+
     }
 
     create_snake() {
@@ -82,6 +81,24 @@ class Snake {
             this.snake_array.push(cube);
             this.scene.add(cube);
         }
+
+    }
+
+
+    create_sound() {
+        this.sound = new Howl({
+            urls: ['/sounds/snake3d.ogg', '/sounds/snake3d.mp3'],
+            sprite: {
+                'theme': [0, 69851],
+                'over': [70574, 6564],
+                'food': [77926, 2191],
+                'left': [80707, 1231],
+                'right': [82568, 1231],
+                'up': [84512, 1231],
+                'down': [86323, 1231]
+
+            }
+        });
 
     }
 
@@ -145,6 +162,7 @@ class Snake {
 
         if (this.nx == this.food.position.x && this.ny == this.food.position.y) {
 
+            this.sound.play('food');
             var cube: THREE.Mesh = this.snake_cube();
             this.snake_array.push(cube);
             this.scene.add(cube);
@@ -181,10 +199,23 @@ class Snake {
         var cube: THREE.Mesh = new THREE.Mesh(geometry, material);
         return cube;
     }
+
+    keys() {
+        var keyevent = new KeyEvent();
+        keyevent.KeyPress.on((e: Key) => {
+            if (e == Key.left && this.direction != Key.right) { this.direction = Key.left; this.sound.play('left').loop(false); }
+            if (e == Key.right && this.direction != Key.left) { this.direction = Key.right; this.sound.play('right').loop(false); }
+            if (e == Key.down && this.direction != Key.up) { this.direction = Key.down; this.sound.play('down').loop(false); }
+            if (e == Key.up && this.direction != Key.down) { this.direction = Key.up; this.sound.play('up').loop(false); }
+
+        });
+        var theme = this.sound;
+        //theme.play('theme').loop(true);
+    }
 };
 
 
- 
+
 
 
 class StartGame {
@@ -196,21 +227,13 @@ class StartGame {
 
     init() {
         var snake_game = new Snake();
+        snake_game.create_sound();
         snake_game.build_playground();
         snake_game.create_snake();
         snake_game.create_food();
         snake_game.render();
-         snake_game.loop();
-
-
-        var keyevent = new KeyEvent();
-        keyevent.KeyPress.on((e: Key) => {
-            if (e == Key.left && snake_game.direction != Key.right) snake_game.direction = Key.left;
-            if (e == Key.right && snake_game.direction != Key.left) snake_game.direction = Key.right;
-            if (e == Key.down && snake_game.direction != Key.up) snake_game.direction = Key.down;
-            if (e == Key.up && snake_game.direction != Key.down) snake_game.direction = Key.up;
-
-        });
+        snake_game.loop();
+        snake_game.keys();
     }
 }
 

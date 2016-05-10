@@ -11,22 +11,7 @@
     "jquery/jquery.d.ts": {
       "commit": "08ed4e9f1869e37e29514d862e0158b40e550232"
     },
-    "createjs/createjs.d.ts": {
-      "commit": "741430a178043bfca40e3a343b8b6f7610104093"
-    },
-    "createjs-lib/createjs-lib.d.ts": {
-      "commit": "741430a178043bfca40e3a343b8b6f7610104093"
-    },
-    "tweenjs/tweenjs.d.ts": {
-      "commit": "741430a178043bfca40e3a343b8b6f7610104093"
-    },
-    "preloadjs/preloadjs.d.ts": {
-      "commit": "741430a178043bfca40e3a343b8b6f7610104093"
-    },
-    "easeljs/easeljs.d.ts": {
-      "commit": "741430a178043bfca40e3a343b8b6f7610104093"
-    },
-    "soundjs/soundjs.d.ts": {
+    "howlerjs/howler.d.ts": {
       "commit": "741430a178043bfca40e3a343b8b6f7610104093"
     }
   }
