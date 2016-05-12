@@ -155,19 +155,19 @@ System.register(['./modules/KeyEvent', './modules/Debug'], function(exports_1, c
                     var _this = this;
                     var keyevent = new KeyEvent_1.KeyEvent();
                     keyevent.KeyPress.on(function (e) {
-                        if (e == KeyEvent_2.Key.left && _this.direction != KeyEvent_2.Key.right) {
+                        if (e == KeyEvent_2.Key.left && _this.direction != KeyEvent_2.Key.right && _this.direction != KeyEvent_2.Key.left) {
                             _this.direction = KeyEvent_2.Key.left;
                             _this.sound.play('left').loop(false);
                         }
-                        if (e == KeyEvent_2.Key.right && _this.direction != KeyEvent_2.Key.left) {
+                        if (e == KeyEvent_2.Key.right && _this.direction != KeyEvent_2.Key.left && _this.direction != KeyEvent_2.Key.right) {
                             _this.direction = KeyEvent_2.Key.right;
                             _this.sound.play('right').loop(false);
                         }
-                        if (e == KeyEvent_2.Key.down && _this.direction != KeyEvent_2.Key.up) {
+                        if (e == KeyEvent_2.Key.down && _this.direction != KeyEvent_2.Key.up && _this.direction != KeyEvent_2.Key.down) {
                             _this.direction = KeyEvent_2.Key.down;
                             _this.sound.play('down').loop(false);
                         }
-                        if (e == KeyEvent_2.Key.up && _this.direction != KeyEvent_2.Key.down) {
+                        if (e == KeyEvent_2.Key.up && _this.direction != KeyEvent_2.Key.down && _this.direction != KeyEvent_2.Key.up) {
                             _this.direction = KeyEvent_2.Key.up;
                             _this.sound.play('up').loop(false);
                         }

@@ -203,10 +203,10 @@ class Snake {
     keys() {
         var keyevent = new KeyEvent();
         keyevent.KeyPress.on((e: Key) => {
-            if (e == Key.left && this.direction != Key.right) { this.direction = Key.left; this.sound.play('left').loop(false); }
-            if (e == Key.right && this.direction != Key.left) { this.direction = Key.right; this.sound.play('right').loop(false); }
-            if (e == Key.down && this.direction != Key.up) { this.direction = Key.down; this.sound.play('down').loop(false); }
-            if (e == Key.up && this.direction != Key.down) { this.direction = Key.up; this.sound.play('up').loop(false); }
+            if (e == Key.left && this.direction != Key.right && this.direction != Key.left) { this.direction = Key.left; this.sound.play('left').loop(false); }
+            if (e == Key.right && this.direction != Key.left && this.direction != Key.right) { this.direction = Key.right; this.sound.play('right').loop(false); }
+            if (e == Key.down && this.direction != Key.up && this.direction != Key.down) { this.direction = Key.down; this.sound.play('down').loop(false); }
+            if (e == Key.up && this.direction != Key.down && this.direction != Key.up) { this.direction = Key.up; this.sound.play('up').loop(false); }
 
         });
         var theme = this.sound;
