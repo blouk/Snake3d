@@ -11,7 +11,7 @@ cd Snake3d
 ##Install dependencies:
 
 ````bash
-$npm install
+ npm install
 ````
 You need npm installed : https://docs.npmjs.com/getting-started/installing-node .
 
